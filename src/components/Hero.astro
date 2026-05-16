@@ -1,0 +1,88 @@
+---
+import { SITE } from '../content/site.config';
+const { eyebrow, headline, headlineEm, subline, ctaPrimary, ctaSecondary } = SITE.hero;
+const [before, after] = headline.split(headlineEm);
+---
+
+<section class="relative min-h-[92vh] flex items-center bg-coal overflow-hidden">
+
+  <!-- Background texture / gradient layers -->
+  <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_30%_60%,rgba(183,95,40,0.18)_0%,transparent_65%)]" />
+  <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_80%_20%,rgba(200,146,42,0.08)_0%,transparent_55%)]" />
+
+  <!-- Decorative vertical rule -->
+  <div class="absolute left-[52%] top-0 bottom-0 w-px bg-white/5 hidden lg:block" />
+
+  <!-- Floating ember particles (CSS only) -->
+  <div class="absolute inset-0 overflow-hidden pointer-events-none">
+    {[...Array(6)].map((_, i) => (
+      <div
+        class="absolute w-1 h-1 rounded-full bg-gold opacity-40"
+        style={`left:${15 + i*14}%; bottom:${20 + (i%3)*15}%; animation: ember ${3+i*0.7}s ease-in-out ${i*0.5}s infinite alternate;`}
+      />
+    ))}
+  </div>
+
+  <div class="relative z-10 max-w-6xl mx-auto px-6 md:px-10
+              grid grid-cols-1 lg:grid-cols-2 gap-16 items-center py-24">
+
+    <!-- Copy -->
+    <div>
+      <!-- Eyebrow -->
+      <div class="inline-flex items-center gap-2 text-gold text-xs font-semibold
+                  uppercase tracking-[0.2em] mb-8 flicker">
+        <span class="text-base">🔥</span>
+        {eyebrow}
+      </div>
+
+      <h1 class="font-display text-parchment leading-[1.05] tracking-tight mb-6
+                 text-5xl sm:text-6xl lg:text-7xl fade-up">
+        {before}<em class="text-gold">{headlineEm}</em>{after}
+      </h1>
+
+      <p class="text-parchment/55 font-light text-lg max-w-md mb-10 leading-relaxed delay-1 fade-up">
+        {subline}
+      </p>
+
+      <div class="flex flex-wrap gap-3 delay-2 fade-up">
+        <a href={ctaPrimary.href}  class="btn-primary">{ctaPrimary.label} →</a>
+        <a href={ctaSecondary.href} class="btn-outline-light">{ctaSecondary.label}</a>
+      </div>
+
+      <!-- Hours preview -->
+      <div class="mt-12 pt-8 border-t border-white/10 grid grid-cols-2 gap-3 delay-3 fade-up">
+        {SITE.hours.slice(1).map(h => (
+          <div>
+            <div class="text-parchment/40 text-xs uppercase tracking-wider">{h.days}</div>
+            <div class="text-parchment/80 text-sm font-medium mt-0.5">{h.time}</div>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <!-- Right — visual card stack -->
+    <div class="relative hidden lg:block h-[520px]">
+      <!-- Main image placeholder -->
+      <div class="absolute inset-6 rounded-2xl bg-ash/60 border border-white/10
+                  flex items-center justify-center overflow-hidden">
+        <div class="absolute inset-0 bg-[radial-gradient(circle_at_50%_70%,rgba(183,95,40,0.3),transparent)]" />
+        <span class="font-display italic text-parchment/20 text-lg relative z-10">hero food photo</span>
+      </div>
+      <!-- Floating info card -->
+      <div class="absolute bottom-0 right-0 bg-coal border border-white/10 rounded-2xl
+                  p-5 shadow-2xl w-52">
+        <div class="text-gold text-xs uppercase tracking-widest mb-1">Tonight's Special</div>
+        <div class="font-display text-parchment text-xl italic mb-1">Cast Iron Ribeye</div>
+        <div class="text-parchment/50 text-xs">12 oz Idaho beef, bone marrow butter</div>
+        <div class="text-ember text-sm font-semibold mt-2">$54</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  @keyframes ember {
+    from { transform: translate(0, 0) scale(1); opacity: 0.4; }
+    to   { transform: translate(-4px, -20px) scale(0.5); opacity: 0; }
+  }
+</style>

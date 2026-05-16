@@ -1,0 +1,94 @@
+---
+import { SITE } from '../content/site.config';
+---
+
+<section id="menu" class="py-20 bg-parchment">
+  <div class="max-w-5xl mx-auto px-6 md:px-10">
+
+    <div class="text-center mb-12">
+      <div class="section-label">Our Menu</div>
+      <h2 class="font-display text-4xl md:text-5xl text-coal italic">
+        Seasonal & always changing
+      </h2>
+      <p class="text-coal/50 mt-3 text-sm max-w-md mx-auto">
+        Menu changes weekly based on what's available from our farm partners.
+      </p>
+    </div>
+
+    <!-- Tab buttons -->
+    <div class="flex flex-wrap justify-center gap-2 mb-10" id="menu-tabs">
+      {SITE.menu.map((section, i) => (
+        <button
+          class:list={[
+            'menu-tab px-5 py-2 rounded-full text-sm font-medium border transition-all duration-200',
+            i === 0
+              ? 'bg-ember text-parchment border-ember'
+              : 'bg-white text-coal/60 border-stone/40 hover:border-ember hover:text-ember'
+          ]}
+          data-tab={i}
+        >
+          {section.icon} {section.section}
+        </button>
+      ))}
+    </div>
+
+    <!-- Menu panels -->
+    {SITE.menu.map((section, i) => (
+      <div
+        class:list={['menu-panel', i !== 0 && 'hidden']}
+        data-panel={i}
+      >
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          {section.items.map(item => (
+            <div class="menu-card p-5 flex justify-between gap-4">
+              <div>
+                <h3 class="font-display text-xl text-coal italic mb-1">{item.name}</h3>
+                <p class="text-coal/55 text-sm leading-relaxed">{item.desc}</p>
+              </div>
+              <div class="text-ember font-semibold text-sm whitespace-nowrap pt-0.5">
+                {item.price}
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <p class="text-center text-coal/35 text-xs mt-8 italic">
+          Menu subject to change based on seasonal availability. Please inform your server of any allergies.
+        </p>
+      </div>
+    ))}
+
+    <!-- Full PDF link (optional) -->
+    <div class="text-center mt-10">
+      <a href="/menu.pdf" target="_blank"
+         class="inline-flex items-center gap-2 text-ember text-sm font-medium
+                hover:underline underline-offset-4">
+        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path d="M12 15V3m0 12-4-4m4 4 4-4M2 17l.621 2.485A2 2 0 0 0 4.561 21H19.44a2 2 0 0 0 1.94-1.515L22 17"/>
+        </svg>
+        Download Full Menu (PDF)
+      </a>
+    </div>
+  </div>
+</section>
+
+<script>
+  const tabs   = document.querySelectorAll('.menu-tab');
+  const panels = document.querySelectorAll('.menu-panel');
+
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      const idx = tab.getAttribute('data-tab');
+
+      tabs.forEach(t => {
+        t.classList.remove('bg-ember','text-parchment','border-ember');
+        t.classList.add('bg-white','text-coal/60','border-stone/40');
+      });
+      tab.classList.add('bg-ember','text-parchment','border-ember');
+      tab.classList.remove('bg-white','text-coal/60','border-stone/40');
+
+      panels.forEach(p => p.classList.add('hidden'));
+      document.querySelector(`[data-panel="${idx}"]`)?.classList.remove('hidden');
+    });
+  });
+</script>

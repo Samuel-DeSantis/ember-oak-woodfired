@@ -1,0 +1,59 @@
+---
+import { SITE } from '../content/site.config';
+---
+
+<section id="reservations" class="py-20 bg-parchment">
+  <div class="max-w-6xl mx-auto px-6 md:px-10">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-10">
+
+      <!-- Reservations -->
+      <div class="bg-coal rounded-2xl p-10 flex flex-col justify-between min-h-[320px]">
+        <div>
+          <div class="text-gold text-xs font-semibold uppercase tracking-widest mb-4">Reservations</div>
+          <h2 class="font-display text-parchment text-3xl md:text-4xl italic leading-snug mb-4">
+            Join us for dinner
+          </h2>
+          <p class="text-parchment/50 text-sm leading-relaxed max-w-sm">
+            We accept reservations for parties of 2–8. Walk-ins welcome based on availability.
+            For parties of 9 or more, please contact us directly.
+          </p>
+        </div>
+        <div class="flex flex-col sm:flex-row gap-3 mt-8">
+          <a href={SITE.reservationsUrl} target="_blank" rel="noopener noreferrer"
+             class="btn-primary text-center">
+            Book via OpenTable →
+          </a>
+          <a href={`tel:${SITE.phone}`} class="btn-outline-light text-center">
+            Call Us
+          </a>
+        </div>
+      </div>
+
+      <!-- Private Events -->
+      <div id="events" class="bg-linen border border-stone/30 rounded-2xl p-10
+                               flex flex-col justify-between min-h-[320px]">
+        <div>
+          <div class="section-label">Private Events</div>
+          <h2 class="font-display text-coal text-3xl md:text-4xl italic leading-snug mb-4">
+            Host your next gathering
+          </h2>
+          <p class="text-coal/55 text-sm leading-relaxed max-w-sm">
+            Semi-private dining for up to 30 guests, or full restaurant buyout for up to 60.
+            Custom menus available. Ideal for corporate dinners, rehearsal dinners, and celebrations.
+          </p>
+          <ul class="mt-5 flex flex-col gap-2">
+            {['Custom seasonal menus', 'AV & event coordination', 'Full buyout or semi-private', 'Corporate invoicing available'].map(item => (
+              <li class="flex items-center gap-2 text-coal/65 text-sm">
+                <span class="text-ember">✦</span> {item}
+              </li>
+            ))}
+          </ul>
+        </div>
+        <a href={`mailto:${SITE.email}?subject=Private Event Inquiry`}
+           class="btn-primary text-center mt-8 self-start">
+          Inquire About Events →
+        </a>
+      </div>
+    </div>
+  </div>
+</section>

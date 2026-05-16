@@ -1,0 +1,59 @@
+/* src/styles/global.css */
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=DM+Sans:wght@300;400;500;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html { scroll-behavior: smooth; }
+  body { @apply bg-parchment text-coal font-body antialiased; }
+}
+
+@layer components {
+  .btn-primary {
+    @apply bg-ember text-parchment font-semibold rounded-full px-7 py-3 text-sm
+           transition-all duration-200 hover:bg-ember-dk hover:-translate-y-0.5
+           shadow-[0_4px_16px_rgba(183,95,40,0.35)];
+  }
+  .btn-secondary {
+    @apply bg-transparent text-coal border border-stone rounded-full px-7 py-3
+           text-sm font-medium transition-all duration-200 hover:border-ember hover:text-ember;
+  }
+  .btn-outline-light {
+    @apply bg-transparent text-parchment border border-parchment/30 rounded-full px-7 py-3
+           text-sm font-medium transition-all duration-200 hover:border-parchment hover:bg-parchment/10;
+  }
+  .section-label {
+    @apply text-ember text-xs font-semibold uppercase tracking-widest mb-2;
+  }
+  .section-title {
+    @apply font-display text-coal leading-tight;
+  }
+  .input {
+    @apply w-full px-4 py-3 bg-white border border-stone/40 rounded-xl text-coal
+           font-body text-sm outline-none transition-colors duration-200
+           focus:border-ember placeholder:text-coal/30;
+  }
+  .menu-card {
+    @apply bg-white rounded-2xl border border-stone/30 overflow-hidden
+           shadow-[0_2px_16px_rgba(30,20,10,0.06)]
+           transition-all duration-200 hover:shadow-[0_6px_24px_rgba(30,20,10,0.10)];
+  }
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.fade-up   { animation: fadeUp 0.65s ease forwards; }
+.delay-1   { animation-delay: 0.1s; opacity: 0; animation-fill-mode: forwards; }
+.delay-2   { animation-delay: 0.22s; opacity: 0; animation-fill-mode: forwards; }
+.delay-3   { animation-delay: 0.36s; opacity: 0; animation-fill-mode: forwards; }
+
+/* Flame flicker on hero badge */
+@keyframes flicker {
+  0%,100% { opacity: 1; }
+  50%      { opacity: 0.75; }
+}
+.flicker { animation: flicker 2.4s ease-in-out infinite; }

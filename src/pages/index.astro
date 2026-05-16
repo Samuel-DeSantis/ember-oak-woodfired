@@ -1,0 +1,22 @@
+---
+import Base         from '../layouts/Base.astro';
+import Navbar       from '../components/Navbar.astro';
+import Hero         from '../components/Hero.astro';
+import Menu         from '../components/Menu.astro';
+import Features     from '../components/Features.astro';
+import Visit        from '../components/Visit.astro';
+import Reservations from '../components/Reservations.astro';
+import Footer       from '../components/Footer.astro';
+import { SITE }     from '../content/site.config';
+---
+<Base title={SITE.seo.defaultTitle} description={SITE.seo.defaultDescription}>
+  <Navbar />
+  <main>
+    <Hero />
+    <Menu />
+    <Features />
+    <Visit />
+    <Reservations />
+  </main>
+  <Footer />
+</Base>
