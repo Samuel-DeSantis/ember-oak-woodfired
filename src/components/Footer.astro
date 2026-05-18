@@ -10,19 +10,19 @@ const socials = Object.entries(SITE.social).filter(([,v]) => v !== '');
 
     <div class="text-center md:text-left">
       <div class="font-display text-parchment italic text-xl mb-1">{SITE.name}</div>
-      <div class="text-parchment/35 text-xs">{SITE.address.full}</div>
+      <div class="text-parchment/60 text-xs">{SITE.address.full}</div>
     </div>
 
     <div class="flex items-center gap-6">
       {socials.map(([platform, url]) => (
         <a href={url} target="_blank" rel="noopener noreferrer"
-           class="text-parchment/40 hover:text-parchment text-sm capitalize transition-colors">
+           class="text-parchment/60 hover:text-parchment text-sm capitalize transition-colors">
           {platform}
         </a>
       ))}
     </div>
 
-    <div class="text-parchment/30 text-xs text-center md:text-right">
+    <div class="text-parchment/55 text-xs text-center md:text-right">
       © {year} {SITE.name}<br />
       <a href={`tel:${SITE.phone}`} class="hover:text-parchment/60 transition-colors">{SITE.phone}</a>
     </div>

@@ -40,7 +40,7 @@ const [before, after] = headline.split(headlineEm);
         {before}<em class="text-gold">{headlineEm}</em>{after}
       </h1>
 
-      <p class="text-parchment/55 font-light text-lg max-w-md mb-10 leading-relaxed delay-1 fade-up">
+      <p class="text-parchment/70 font-light text-lg max-w-md mb-10 leading-relaxed delay-1 fade-up">
         {subline}
       </p>
 
@@ -53,8 +53,8 @@ const [before, after] = headline.split(headlineEm);
       <div class="mt-12 pt-8 border-t border-white/10 grid grid-cols-2 gap-3 delay-3 fade-up">
         {SITE.hours.slice(1).map(h => (
           <div>
-            <div class="text-parchment/40 text-xs uppercase tracking-wider">{h.days}</div>
-            <div class="text-parchment/80 text-sm font-medium mt-0.5">{h.time}</div>
+            <div class="text-parchment/60 text-xs uppercase tracking-wider">{h.days}</div>
+            <div class="text-parchment text-sm font-medium mt-0.5">{h.time}</div>
           </div>
         ))}
       </div>
